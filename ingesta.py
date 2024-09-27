@@ -7,7 +7,8 @@ db_connection = mysql.connector.connect(
     host="52.55.200.165",      
     user="root",
     password="utec",
-    database="tienda"
+    database="tienda",
+    port=8005
 )
 
 cursor = db_connection.cursor()
@@ -28,9 +29,9 @@ cursor.close()
 db_connection.close()
 
 s3 = boto3.client('s3')
-nombreBucket = "mmrr-ingesta02"
+nombreBucket = "mmr-ingesta02"
 nombreArchivoS3 = "data.csv"
 
 s3.put_object(Bucket=nombreBucket, Key=nombreArchivoS3, Body=csv_buffer.getvalue())
 
-print("Ingesta completada")
+print("Ingesta 2 completada")
